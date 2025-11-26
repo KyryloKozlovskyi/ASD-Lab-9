@@ -12,7 +12,7 @@ package ie.atu.sw;
  * thus, must be serializable. This is an example of (remote) pass by value.
  */
 import java.io.*;
-public class Message implements Serializable{
+public class Message implements Serializable, RemoteMessage{
 	private static final long serialVersionUID = 1L;
 	private String msg;
 	
