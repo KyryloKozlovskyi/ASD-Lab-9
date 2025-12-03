@@ -11,6 +11,7 @@ package ie.atu.sw;
  * that implements a remote interface is called a Remote Object.
  */
 import java.rmi.*;
-public interface MessageService extends Remote{
-	public Message getMessage() throws RemoteException;
+
+public interface MessageService extends Remote {
+	public RemoteMessage getMessage() throws RemoteException;
 }

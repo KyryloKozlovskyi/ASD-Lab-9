@@ -13,25 +13,30 @@ package ie.atu.sw;
  */
 import java.rmi.*;
 import java.rmi.registry.*;
+
 public class MessageServer {
-	public static void main(String[] args) throws Exception{
-		//A string, representing the message we want to associate with our Message object
+	public static void main(String[] args) throws Exception {
+		// A string, representing the message we want to associate with our Message
+		// object
 		String s = "Message from " + System.getProperty("user.name");
-		
-		//Create an instance of the class Message and pass the string as an argument to its constructor.
-		Message msg = new Message(s);
-		
-		//Create an instance of a MessageService. As MessageServiceImpl implements the MessageService
-		//interface, it can be referred to as a MessageService type.
+
+		// Create an instance of the class Message and pass the string as an argument to
+		// its constructor.
+		RemoteMessage msg = new RemoteMessageImpl(s);
+
+		// Create an instance of a MessageService. As MessageServiceImpl implements the
+		// MessageService
+		// interface, it can be referred to as a MessageService type.
 		MessageService ms = new MessageServiceImpl(msg);
-		
-		//Start the RMI regstry on port 1099
+
+		// Start the RMI regstry on port 1099
 		LocateRegistry.createRegistry(1099);
-		
-		//Bind our remote object to the registry with the human-readable name "howdayService"
+
+		// Bind our remote object to the registry with the human-readable name
+		// "howdayService"
 		Naming.rebind("ATUMessageService", ms);
-		
-		//Print a nice message to standard output
+
+		// Print a nice message to standard output
 		System.out.println("[INFO] Server ready...");
 	}
 }

@@ -1,7 +1,9 @@
 package ie.atu.sw;
 
-import java.rmi.*;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
+// Extracted RemoteMessage interface
 public interface RemoteMessage extends Remote {
-	public String message() throws RemoteException;
+	String message() throws RemoteException;
 }
